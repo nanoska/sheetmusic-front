@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# SheetMusic-FRONT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dashboard administrativo para gestión de partituras desarrollado en React + TypeScript.
 
-## Available Scripts
+## Características
 
-In the project directory, you can run:
+- **Autenticación**: Sistema de login con tokens JWT
+- **Dashboard Administrativo**: Interfaz intuitiva para gestión de contenido
+- **Gestión de Temas**: Visualización y administración de temas musicales
+- **Subida de Archivos**: Contenedor drag-and-drop para múltiples archivos
+- **Responsive**: Interfaz adaptada para móviles y escritorio
 
-### `npm start`
+## Tecnologías
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React 19.1.1
+- TypeScript
+- React Router
+- Axios
+- React Dropzone
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Instalación
 
-### `npm test`
+1. Instalar dependencias:
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Configurar variables de entorno:
+```bash
+cp .env.example .env
+```
 
-### `npm run build`
+3. Iniciar la aplicación:
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Variables de Entorno
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `REACT_APP_API_URL`: URL base de la API (por defecto: http://localhost:8000/api/v1)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Estructura del Proyecto
 
-### `npm run eject`
+```
+src/
+├── components/           # Componentes React
+│   ├── Login.tsx        # Componente de login
+│   ├── Dashboard.tsx    # Dashboard principal
+│   ├── FileUpload.tsx   # Subida de archivos drag-and-drop
+│   ├── ThemeList.tsx    # Lista de temas musicales
+│   └── ProtectedRoute.tsx # Rutas protegidas
+├── context/             # Contextos React
+│   └── AuthContext.tsx  # Contexto de autenticación
+├── services/            # Servicios API
+│   └── api.ts          # Cliente API con Axios
+├── types/               # Tipos TypeScript
+│   └── api.ts          # Tipos de la API
+└── App.tsx             # Componente principal
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## API Integration
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La aplicación está diseñada para integrarse con la API de Django Rest Framework del proyecto SheetMusic-API. Incluye:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Autenticación con tokens JWT
+- Gestión automática de refresh tokens
+- Endpoints para temas, instrumentos, versiones y partituras
+- Subida de archivos multimedia
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Comandos Disponibles
 
-## Learn More
+- `npm start`: Inicia el servidor de desarrollo
+- `npm run build`: Construye la aplicación para producción
+- `npm test`: Ejecuta los tests
+- `npm run eject`: Expone la configuración de Webpack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Funcionalidades Implementadas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ✅ Autenticación
+- Login con credenciales
+- Manejo de tokens JWT
+- Rutas protegidas
+- Logout
+
+### ✅ Dashboard
+- Navegación por pestañas
+- Lista de temas musicales
+- Interfaz responsive
+
+### ✅ Subida de Archivos
+- Drag and drop para múltiples archivos
+- Preview de imágenes
+- Progreso de subida
+- Soporte para audio, imágenes, PDF y archivos MuseScore
+
+## Próximas Funcionalidades
+
+- Gestión completa de temas (CRUD)
+- Administración de instrumentos
+- Gestión de versiones
+- Visualización de partituras
+- Búsqueda y filtros avanzados
+
+---
+
+*Este proyecto fue creado con [Create React App](https://github.com/facebook/create-react-app).*
