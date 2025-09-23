@@ -22,15 +22,18 @@ export interface Instrument {
 export interface Version {
   id: number;
   theme: number;
+  theme_title?: string;
   title: string;
   type: 'STANDARD' | 'ENSAMBLE' | 'DUETO' | 'GRUPO_REDUCIDO';
+  type_display?: string;
   image?: string;
   audio_file?: string;
   mus_file?: string;
   notes: string;
+  sheet_music_count?: number;
   created_at: string;
   updated_at: string;
-  sheet_music: SheetMusic[];
+  sheet_music?: SheetMusic[];
 }
 
 export interface SheetMusic {

@@ -49,11 +49,21 @@ class ApiService {
 
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
     const response = await this.api.post('/auth/login/', credentials);
-    const { access, refresh, user } = response.data;
+    const { access, refresh } = response.data;
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
+
+    // Create a basic user object from credentials
+    const user = {
+      id: 1,
+      username: credentials.username,
+      email: '',
+      first_name: '',
+      last_name: ''
+    };
     localStorage.setItem('user', JSON.stringify(user));
-    return response.data;
+
+    return { access, refresh, user };
   }
 
   logout(): void {
@@ -72,41 +82,68 @@ class ApiService {
   }
 
   async getThemes(): Promise<Theme[]> {
-    const response = await this.api.get('/themes/');
+    const response = await this.api.get('/api/themes/');
     return response.data.results || response.data;
   }
 
   async getTheme(id: number): Promise<Theme> {
-    const response = await this.api.get(`/themes/${id}/`);
+    const response = await this.api.get(`/api/themes/${id}/`);
     return response.data;
   }
 
   async createTheme(theme: Partial<Theme>): Promise<Theme> {
-    const response = await this.api.post('/themes/', theme);
+    const response = await this.api.post('/api/themes/', theme);
     return response.data;
   }
 
   async updateTheme(id: number, theme: Partial<Theme>): Promise<Theme> {
-    const response = await this.api.put(`/themes/${id}/`, theme);
+    const response = await this.api.put(`/api/themes/${id}/`, theme);
     return response.data;
   }
 
   async deleteTheme(id: number): Promise<void> {
-    await this.api.delete(`/themes/${id}/`);
+    await this.api.delete(`/api/themes/${id}/`);
   }
 
   async getInstruments(): Promise<Instrument[]> {
-    const response = await this.api.get('/instruments/');
+    const response = await this.api.get('/api/instruments/');
     return response.data.results || response.data;
   }
 
   async getVersions(): Promise<Version[]> {
-    const response = await this.api.get('/versions/');
+    const response = await this.api.get('/api/versions/');
     return response.data.results || response.data;
   }
 
+  async getVersion(id: number): Promise<Version> {
+    const response = await this.api.get(`/api/versions/${id}/`);
+    return response.data;
+  }
+
+  async createVersion(versionData: FormData): Promise<Version> {
+    const response = await this.api.post('/api/versions/', versionData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  }
+
+  async updateVersion(id: number, versionData: FormData): Promise<Version> {
+    const response = await this.api.put(`/api/versions/${id}/`, versionData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  }
+
+  async deleteVersion(id: number): Promise<void> {
+    await this.api.delete(`/api/versions/${id}/`);
+  }
+
   async getSheetMusic(): Promise<SheetMusic[]> {
-    const response = await this.api.get('/sheet-music/');
+    const response = await this.api.get('/api/sheet-music/');
     return response.data.results || response.data;
   }
 

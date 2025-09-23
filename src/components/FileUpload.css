@@ -1,8 +1,8 @@
 .file-upload-container {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px var(--shadow-light);
 }
 
 .upload-header {
@@ -12,33 +12,33 @@
 
 .upload-header h2 {
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.5rem;
 }
 
 .upload-header p {
   margin: 0;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
 .dropzone {
-  border: 2px dashed #e1e5e9;
+  border: 2px dashed var(--border-primary);
   border-radius: 12px;
   padding: 3rem 2rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #fafbfc;
+  background: var(--bg-secondary);
 }
 
 .dropzone:hover {
-  border-color: #667eea;
-  background: #f8f9ff;
+  border-color: var(--primary-color);
+  background: var(--bg-tertiary);
 }
 
 .dropzone.active {
-  border-color: #667eea;
+  border-color: var(--primary-color);
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   transform: scale(1.02);
 }
@@ -59,18 +59,18 @@
 
 .dropzone p {
   margin: 0.5rem 0;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
 .click-text {
-  color: #667eea;
+  color: var(--primary-color);
   font-weight: 600;
 }
 
 .supported-formats {
   font-size: 0.9rem !important;
-  color: #adb5bd !important;
+  color: var(--text-tertiary) !important;
   margin-top: 1rem !important;
 }
 
@@ -84,12 +84,12 @@
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e1e5e9;
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .files-header h3 {
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.2rem;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .upload-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -151,15 +151,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border: 1px solid #e1e5e9;
+  border: 1px solid var(--border-primary);
   border-radius: 8px;
-  background: #fafbfc;
+  background: var(--bg-secondary);
   transition: all 0.2s ease;
 }
 
 .file-item:hover {
-  background: #f1f3f4;
-  border-color: #ced4da;
+  background: var(--bg-tertiary);
+  border-color: var(--border-secondary);
 }
 
 .file-info {
@@ -174,7 +174,7 @@
   height: 50px;
   border-radius: 8px;
   overflow: hidden;
-  background: #e9ecef;
+  background: var(--bg-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,14 +197,14 @@
 
 .file-name {
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
   word-break: break-word;
 }
 
 .file-meta {
   font-size: 0.85rem;
-  color: #6c757d;
+  color: var(--text-secondary);
 }
 
 .file-actions {
@@ -222,20 +222,20 @@
 .progress-bar {
   width: 100px;
   height: 6px;
-  background: #e9ecef;
+  background: var(--bg-tertiary);
   border-radius: 3px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   transition: width 0.3s ease;
 }
 
 .progress-text {
   font-size: 0.8rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   min-width: 35px;
 }
 

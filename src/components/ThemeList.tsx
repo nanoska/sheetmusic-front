@@ -48,16 +48,16 @@ const ThemeList: React.FC = () => {
     <div className="theme-list-container">
       <div className="theme-list-header">
         <h2>Temas Musicales</h2>
-        <button className="add-button">
-          + Agregar Tema
+        <button className="add-button" title="Agregar nuevo tema">
+          ➕ Agregar Tema
         </button>
       </div>
 
       {themes.length === 0 ? (
         <div className="empty-state">
           <p>No hay temas registrados aún.</p>
-          <button className="add-button">
-            Agregar primer tema
+          <button className="add-button" title="Agregar primer tema">
+            ➕ Agregar primer tema
           </button>
         </div>
       ) : (
@@ -73,28 +73,30 @@ const ThemeList: React.FC = () => {
               </div>
 
               <div className="theme-content">
-                <h3 className="theme-title">{theme.title}</h3>
-                {theme.artist && (
-                  <p className="theme-artist">{theme.artist}</p>
-                )}
-
-                <div className="theme-meta">
-                  {theme.tonalidad && (
-                    <span className="tonality">Tonalidad: {theme.tonalidad}</span>
+                <div className="theme-info">
+                  <h3 className="theme-title">{theme.title}</h3>
+                  {theme.artist && (
+                    <p className="theme-artist">{theme.artist}</p>
                   )}
-                  <span className="versions-count">
-                    {theme.versions?.length || 0} versiones
-                  </span>
+
+                  <div className="theme-meta">
+                    {theme.tonalidad && (
+                      <span className="tonality">Tonalidad: {theme.tonalidad}</span>
+                    )}
+                    <span className="versions-count">
+                      {theme.versions?.length || 0} versiones
+                    </span>
+                  </div>
+
+                  {theme.description && (
+                    <p className="theme-description">{theme.description}</p>
+                  )}
                 </div>
 
-                {theme.description && (
-                  <p className="theme-description">{theme.description}</p>
-                )}
-
                 <div className="theme-actions">
-                  <button className="action-button edit">Editar</button>
-                  <button className="action-button view">Ver</button>
-                  <button className="action-button delete">Eliminar</button>
+                  <button className="action-button edit" title="Editar tema">✏️</button>
+                  <button className="action-button view" title="Ver partituras">👁️</button>
+                  <button className="action-button delete" title="Eliminar tema">🗑️</button>
                 </div>
               </div>
             </div>
