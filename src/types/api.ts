@@ -72,6 +72,7 @@ export interface Location {
   name: string;
   address: string;
   city: string;
+  postal_code: string;
   country: string;
   capacity: number;
   contact_email?: string;
@@ -85,14 +86,11 @@ export interface Location {
 
 export interface RepertoireVersion {
   id: number;
-  repertoire: number;
-  version: number;
-  version_title?: string;
-  version_artist?: string;
-  version_type?: string;
+  version: Version;
+  version_id?: number;
   order: number;
+  notes: string;
   created_at: string;
-  updated_at: string;
 }
 
 export interface Repertoire {
@@ -100,28 +98,29 @@ export interface Repertoire {
   name: string;
   description?: string;
   is_active: boolean;
+  versions: RepertoireVersion[];
+  version_count: number;
   created_at: string;
   updated_at: string;
-  versions: RepertoireVersion[];
 }
 
 export interface Event {
   id: number;
   title: string;
+  event_type: 'CONCERT' | 'REHEARSAL' | 'RECORDING' | 'WORKSHOP' | 'OTHER';
+  status: 'DRAFT' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED';
   description?: string;
-  location: number | Location;
-  location_details?: {
-    name: string;
-    address: string;
-    city: string;
-  };
-  repertoire?: number | Repertoire;
-  start_time: string;
-  end_time?: string;
-  status: 'scheduled' | 'completed' | 'cancelled';
+  start_datetime: string;
+  end_datetime: string;
+  location?: Location;
+  location_id?: number;
+  repertoire?: Repertoire;
+  repertoire_id?: number;
   is_public: boolean;
   max_attendees?: number;
-  notes?: string;
+  price: number;
+  is_upcoming: boolean;
+  is_ongoing: boolean;
   created_at: string;
   updated_at: string;
 }

@@ -88,13 +88,31 @@ class ApiService {
   // Repertoire methods
   async getRepertoires(): Promise<Repertoire[]> {
     const response = await this.api.get('/events/repertoires/');
-    return response.data;
+    return response.data.results || response.data;
   }
 
   async getRepertoire(id: number): Promise<Repertoire> {
     const response = await this.api.get(`/events/repertoires/${id}/`);
     return response.data;
   }
+
+  async createRepertoire(repertoireData: Omit<Repertoire, 'id' | 'created_at' | 'updated_at'>): Promise<Repertoire> {
+    const response = await this.api.post('/events/repertoires/', repertoireData);
+    return response.data;
+  }
+
+  async updateRepertoire(id: number, repertoireData: Partial<Repertoire>): Promise<Repertoire> {
+    const response = await this.api.patch(`/events/repertoires/${id}/`, repertoireData);
+    return response.data;
+  }
+
+  async deleteRepertoire(id: number): Promise<void> {
+    await this.api.delete(`/events/repertoires/${id}/`);
+  }
+
+  // Note: Para agregar/quitar versiones, necesitamos manejar esto
+  // a través del serializer de Repertoire enviando la lista completa de versions
+  // en el método updateRepertoire
 
   // Auth methods
   async login(credentials: LoginCredentials): Promise<AuthResponse> {

@@ -13,8 +13,8 @@ RUN npm install
 # Copiar el resto de la aplicación
 COPY . .
 
-# Construir la aplicación
-RUN npm run build
+# Construir la aplicación con más memoria
+RUN NODE_OPTIONS="--max_old_space_size=4096" npm run build
 
 # Etapa de producción
 FROM nginx:alpine
