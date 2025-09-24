@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { Theme, Instrument, Version, SheetMusic, AuthResponse, LoginCredentials } from '../types/api';
+import { Theme, Instrument, Version, SheetMusic, AuthResponse, LoginCredentials, Event, Location, Repertoire } from '../types/api';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
 
@@ -47,6 +47,56 @@ class ApiService {
     );
   }
 
+  // Event methods
+  async getEvents(params?: any): Promise<{ count: number; results: Event[] }> {
+    const response = await this.api.get('/events/events/', { params });
+    return response.data;
+  }
+
+  async getEvent(id: number): Promise<Event> {
+    const response = await this.api.get(`/events/events/${id}/`);
+    return response.data;
+  }
+
+  async createEvent(eventData: Omit<Event, 'id' | 'created_at' | 'updated_at' | 'status'>): Promise<Event> {
+    const response = await this.api.post('/events/events/', eventData);
+    return response.data;
+  }
+
+  async updateEvent(id: number, eventData: Partial<Event>): Promise<Event> {
+    const response = await this.api.patch(`/events/events/${id}/`, eventData);
+    return response.data;
+  }
+
+  async deleteEvent(id: number): Promise<void> {
+    await this.api.delete(`/events/events/${id}/`);
+  }
+
+  // Location methods
+  async getLocations(activeOnly: boolean = true): Promise<Location[]> {
+    const response = await this.api.get('/events/locations/', { 
+      params: { is_active: activeOnly } 
+    });
+    return response.data;
+  }
+
+  async createLocation(locationData: Omit<Location, 'id' | 'created_at' | 'updated_at'>): Promise<Location> {
+    const response = await this.api.post('/events/locations/', locationData);
+    return response.data;
+  }
+
+  // Repertoire methods
+  async getRepertoires(): Promise<Repertoire[]> {
+    const response = await this.api.get('/events/repertoires/');
+    return response.data;
+  }
+
+  async getRepertoire(id: number): Promise<Repertoire> {
+    const response = await this.api.get(`/events/repertoires/${id}/`);
+    return response.data;
+  }
+
+  // Auth methods
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
     const response = await this.api.post('/auth/login/', credentials);
     const { access, refresh } = response.data;

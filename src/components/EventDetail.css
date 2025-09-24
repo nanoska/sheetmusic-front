@@ -1,0 +1,145 @@
+.event-detail-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-detail-paper {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.event-metadata {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3f51b5;
+}
+
+.event-metadata .MuiTypography-h6 {
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+.MuiFormControl-root {
+  margin-bottom: 16px;
+}
+
+.MuiButton-root {
+  margin: 8px;
+  text-transform: none;
+}
+
+.MuiButton-contained {
+  box-shadow: none;
+}
+
+.MuiButton-startIcon {
+  margin-right: 4px;
+}
+
+/* Estilos para los campos de fecha y hora */
+.MuiPickersBasePicker-container {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+/* Estilos para los diálogos */
+.MuiDialog-paper {
+  padding: 16px;
+}
+
+.MuiDialogTitle-root {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.MuiDialogContent-root {
+  padding: 20px 24px;
+}
+
+.MuiDialogActions-root {
+  padding: 8px 24px 16px;
+  justify-content: flex-end;
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+  color: #d32f2f;
+  margin: 8px 0;
+  font-size: 0.875rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 900px) {
+  .event-detail-container {
+    padding: 10px;
+  }
+  
+  .event-detail-paper {
+    padding: 16px;
+  }
+  
+  .MuiGrid-container {
+    flex-direction: column;
+  }
+  
+  .MuiGrid-item {
+    width: 100%;
+  }
+  
+  .MuiButton-root {
+    width: 100%;
+    margin: 4px 0;
+  }
+}
+
+/* Estilos para los campos de formulario */
+.MuiInputBase-input {
+  font-size: 0.875rem;
+}
+
+.MuiInputLabel-root {
+  font-size: 0.875rem;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #3f51b5;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #3f51b5;
+}
+
+/* Estilos para los botones de acción */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Estilos para los chips de estado */
+.status-chip {
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.status-chip.scheduled {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-chip.completed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-chip.cancelled {
+  background-color: #ffebee;
+  color: #d32f2f;
+}

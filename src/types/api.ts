@@ -66,3 +66,62 @@ export interface LoginCredentials {
   username: string;
   password: string;
 }
+
+export interface Location {
+  id: number;
+  name: string;
+  address: string;
+  city: string;
+  country: string;
+  capacity: number;
+  contact_email?: string;
+  contact_phone?: string;
+  website?: string;
+  notes?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RepertoireVersion {
+  id: number;
+  repertoire: number;
+  version: number;
+  version_title?: string;
+  version_artist?: string;
+  version_type?: string;
+  order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Repertoire {
+  id: number;
+  name: string;
+  description?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+  versions: RepertoireVersion[];
+}
+
+export interface Event {
+  id: number;
+  title: string;
+  description?: string;
+  location: number | Location;
+  location_details?: {
+    name: string;
+    address: string;
+    city: string;
+  };
+  repertoire?: number | Repertoire;
+  start_time: string;
+  end_time?: string;
+  status: 'scheduled' | 'completed' | 'cancelled';
+  is_public: boolean;
+  max_attendees?: number;
+  notes?: string;
+  created_at: string;
+  updated_at: string;
+}

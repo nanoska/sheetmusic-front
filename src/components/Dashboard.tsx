@@ -5,9 +5,10 @@ import FileUpload from './FileUpload';
 import ThemeManager from './ThemeManager';
 import VersionList from './VersionList';
 import ThemeToggle from './ThemeToggle';
+import EventManager from './EventManager';
 import './Dashboard.css';
 
-type TabType = 'themes' | 'upload' | 'versions';
+type TabType = 'themes' | 'upload' | 'versions' | 'events';
 
 const Dashboard: React.FC = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -34,6 +35,8 @@ const Dashboard: React.FC = () => {
         return <FileUpload />;
       case 'versions':
         return <VersionList />;
+      case 'events':
+        return <EventManager />;
       default:
         return <ThemeManager />;
     }
@@ -83,6 +86,15 @@ const Dashboard: React.FC = () => {
                 >
                   <span className="nav-icon">📋</span>
                   {!sidebarCollapsed && <span className="nav-text">Versiones</span>}
+                </button>
+              </li>
+              <li>
+                <button
+                  className={`nav-button ${activeTab === 'events' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('events')}
+                >
+                  <span className="nav-icon">📅</span>
+                  {!sidebarCollapsed && <span className="nav-text">Eventos</span>}
                 </button>
               </li>
             </ul>
